@@ -4,42 +4,43 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-//agregar
 using RentaCars.EN;
 using RentaCars.BL;
 using System.Web.Http.Cors;
 
 namespace WebAPI.Controllers
 {
-    public class RentaController : ApiController
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class VehiculoController : ApiController
     {
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
-        private RentaBL renta = new RentaBL();
-        // GET: api/Renta
-        public IEnumerable<Renta> Get()
-        {
-            return renta.ListRenta("Activo");
-        }
-        // GET: api/Renta/5
 
-        public Renta Get(int id)
+        private VehiculoBL VBL = new VehiculoBL();
+        // GET: api/Vehiculo
+        public IEnumerable<Vehiculo> Get()
         {
-            Renta rent = renta.findRenta(id);
-            if (renta == null)
+            return VBL.VehiculoList("Activo");
+        }
+
+        // GET: api/Vehiculo/5
+        public Vehiculo Get(int id)
+        {
+            Vehiculo car = VBL.FindVehiculo(id);
+            if (car == null)
             {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NoContent));
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+
             }
-            return renta.findRenta(id);
+            return VBL.FindVehiculo(id);
         }
 
-        // POST: api/Renta
-        public HttpResponseMessage Post([FromBody] Renta rent)
+        // POST: api/Vehiculo
+        public HttpResponseMessage Post([FromBody]Vehiculo car)
         {
             if (ModelState.IsValid)
             {
-                renta.agregarrenta(rent);
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, renta);
-                response.Headers.Location = new Uri(Url.Link("DefauldtApi", new { id = rent.RentaID }));
+                VBL.InserVehiculo(car);
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, car);
+                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = car.VehiculoID }));
                 return response;
             }
             else
@@ -47,20 +48,23 @@ namespace WebAPI.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
         }
-        // PUT: api/Renta/5
-        public HttpResponseMessage Put(int id, [FromBody] Renta rent)
+
+        // PUT: api/Vehiculo/5
+        public HttpResponseMessage Put(int id, [FromBody]Vehiculo car)
         {
             if (ModelState.IsValid)
             {
                 if (id > 0)
                 {
-                    rent.RentaID = id;
-                    renta.ModificarRenta(rent);
+                    car.VehiculoID = id;
+                    VBL.UpdateVehiculo(car);
                     return Request.CreateResponse(HttpStatusCode.OK);
+
                 }
+
                 else
                 {
-                    throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotModified));
+                    throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
                 }
             }
             else
@@ -69,12 +73,12 @@ namespace WebAPI.Controllers
             }
         }
 
-        // DELETE: api/Renta/5
+        // DELETE: api/Vehiculo/5
         public HttpResponseMessage Delete(int id)
         {
             if (ModelState.IsValid)
             {
-                renta.DeleteRenta(id);
+                VBL.DeleteVehiculo(id);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             else
@@ -82,5 +86,8 @@ namespace WebAPI.Controllers
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest));
             }
         }
+
+
     }
 }
+

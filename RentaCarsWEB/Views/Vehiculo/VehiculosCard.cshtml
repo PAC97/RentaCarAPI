@@ -1,0 +1,30 @@
+﻿@model IEnumerable<RentaCars.EN.Vehiculo>
+
+@{
+    ViewBag.Title = "VehiculosCard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <h2>VehiculosCard</h2>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="@item.imagen" class="card-img-top img-responsive" style="width:250px; height:250px;">
+                    <div class="card-body">
+                        <h2 class="card-text">@item.Marca</h2>
+                        <h5 class="card-text">@item.Modelo</h5>
+                        <h5 class="card-text">@item.PrecioDiario</h5>
+                        <h5 class="card-text">@item.Placa</h5>
+                        <h5 class="card-text">@item.Npuertas</h5>
+                        <a href="#" class="btn btn-primary">Reservar</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

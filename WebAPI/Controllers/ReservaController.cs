@@ -7,11 +7,13 @@ using System.Web.Http;
 
 using RentaCars.EN;
 using RentaCars.BL;
+using System.Web.Http.Cors;
 
 namespace WebAPI.Controllers
 {
     public class ReservaController : ApiController
     {
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         private ReservaBL RBL = new ReservaBL();
         // GET: api/Reserva
         public IEnumerable<Reserva> Get()

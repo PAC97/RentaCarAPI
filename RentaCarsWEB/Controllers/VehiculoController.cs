@@ -1,23 +1,31 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RentaCars.BL;
+using RentaCars.EN;
 
 namespace RentaCarsWEB.Controllers
 {
     public class VehiculoController : Controller
     {
+        VehiculoBL BL = new VehiculoBL();
         // GET: Vehiculo
-        public ActionResult Index()
+        public ActionResult Index(string state)
         {
-            return View();
+            return View(BL.VehiculoList(state));
         }
-
+        //GET:Vehiculo cards
+        public ActionResult VehiculosCard(string state)
+        {
+            return View(BL.VehiculoList(state));
+        }
         // GET: Vehiculo/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(BL.FindVehiculo(id));
         }
 
         // GET: Vehiculo/Create
@@ -28,15 +36,21 @@ namespace RentaCarsWEB.Controllers
 
         // POST: Vehiculo/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Vehiculo cat, string avatarCropped)
         {
             try
             {
+                cat.imagen = avatarCropped;
+                cat.EstadoID = 1;
                 // TODO: Add insert logic here
+                if (cat != null)
+                {
 
+                    BL.InserVehiculo(cat);
+                }
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
                 return View();
             }
@@ -50,12 +64,12 @@ namespace RentaCarsWEB.Controllers
 
         // POST: Vehiculo/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Vehiculo car)
         {
             try
             {
                 // TODO: Add update logic here
-
+                BL.UpdateVehiculo(car);
                 return RedirectToAction("Index");
             }
             catch
@@ -67,7 +81,7 @@ namespace RentaCarsWEB.Controllers
         // GET: Vehiculo/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(BL.FindVehiculo(id));
         }
 
         // POST: Vehiculo/Delete/5
@@ -77,7 +91,7 @@ namespace RentaCarsWEB.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                BL.DeleteVehiculo(id);
                 return RedirectToAction("Index");
             }
             catch

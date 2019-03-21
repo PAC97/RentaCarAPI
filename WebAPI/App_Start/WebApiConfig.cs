@@ -12,6 +12,8 @@ namespace WebAPI
             // Configuración y servicios de API web
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             config.Formatters.Add(config.Formatters.JsonFormatter);
+
+            config.EnableCors();
             // Rutas de API web
             config.MapHttpAttributeRoutes();
 

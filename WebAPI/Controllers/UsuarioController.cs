@@ -6,11 +6,13 @@ using System.Net.Http;
 using System.Web.Http;
 using RentaCars.BL;
 using RentaCars.EN;
+using System.Web.Http.Cors;
 
 namespace WebAPI.Controllers
 {
     public class UsuarioController : ApiController
     {
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         private UsuarioBL Ubl = new UsuarioBL();//Instancia y objeto creado(Ubl)
         // GET: api/Usuario
         public IEnumerable<Usuario> Get()
