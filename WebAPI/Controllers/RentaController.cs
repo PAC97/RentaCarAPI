@@ -11,9 +11,11 @@ using System.Web.Http.Cors;
 
 namespace WebAPI.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+
     public class RentaController : ApiController
     {
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        
         private RentaBL renta = new RentaBL();
         // GET: api/Renta
         public IEnumerable<Renta> Get()

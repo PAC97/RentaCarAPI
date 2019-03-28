@@ -10,10 +10,11 @@ using System.Web.Http.Cors;
 
 namespace WebAPI.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+
     public class EstadoController : ApiController
     {
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
-        private EstadoBL EBL = new EstadoBL();
+                private EstadoBL EBL = new EstadoBL();
         // GET: api/Estado
         public IEnumerable<Estado> Get()
         {

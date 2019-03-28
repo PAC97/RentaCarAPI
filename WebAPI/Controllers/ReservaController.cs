@@ -11,9 +11,10 @@ using System.Web.Http.Cors;
 
 namespace WebAPI.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ReservaController : ApiController
     {
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
+       
         private ReservaBL RBL = new ReservaBL();
         // GET: api/Reserva
         public IEnumerable<Reserva> Get()

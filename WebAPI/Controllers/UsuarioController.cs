@@ -10,9 +10,10 @@ using System.Web.Http.Cors;
 
 namespace WebAPI.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UsuarioController : ApiController
     {
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
+       
         private UsuarioBL Ubl = new UsuarioBL();//Instancia y objeto creado(Ubl)
         // GET: api/Usuario
         public IEnumerable<Usuario> Get()
