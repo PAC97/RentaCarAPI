@@ -14,7 +14,7 @@ namespace RentaCars.DAL
     public class ProjectContext : DbContext
     {
         //const string ConnString = "Data Source=SQL5041.site4now.net;Initial Catalog=DB_A46F14_RentaCars_admin;Password=abcd1234;";
-        const string ConnString = "workstation id=RentaCa.mssql.somee.com;packet size=4096;user id=Vlad153_SQLLogin_1;pwd=jqixsdbauz;data source=RentaCa.mssql.somee.com;persist security info=False;initial catalog=RentaCa";
+        const string ConnString = "workstation id=RentaCars.mssql.somee.com;packet size=4096;user id=PAC97_SQLLogin_1;pwd=w1rvffqbsi;data source=RentaCars.mssql.somee.com;persist security info=False;initial catalog=RentaCars";
         //const string ConnString = "Data Source=.; initial Catalog=RentaCars; Integrated Security=True";
         public ProjectContext() : base(ConnString)
         {
