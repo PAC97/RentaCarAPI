@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="EstadoDALTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tipo_UsuarioDALTests.cs" />
+    <Compile Include="UsuarioDALTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

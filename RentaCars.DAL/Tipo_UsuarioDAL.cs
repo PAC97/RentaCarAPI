@@ -49,7 +49,7 @@ namespace RentaCars.DAL
         {
             int r = 0;
             TipoUsuario tipo = db.TipoUsuario.Find(id);
-            tipo.Estado.EstadoID = 2;
+            tipo.EstadoID = 2;
             r = UpdateTipo_Usuario(tipo);
             return r;
         }
