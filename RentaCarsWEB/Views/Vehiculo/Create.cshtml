@@ -71,13 +71,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PagoTotal, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PagoTotal, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PagoTotal, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        
 
    
 
@@ -96,11 +90,11 @@
             <table>
                 <tr>
                     <td>
-                        Width: <label id="lblWidth">200px</label>
-                        Height: <label id="lblHeight">200px</label>
+                        Alto: <label id="lblWidth">200px</label>
+                        Ancho: <label id="lblHeight">200px</label>
                     </td>
                     <td>
-                        <a href="#" id="hlcropImage" style="vertical-align:top;">Crop Image</a>
+                        <a href="#" id="hlcropImage" style="vertical-align:top;">Cortar Imagen</a>
                     </td>
                 </tr>
                 <tr>

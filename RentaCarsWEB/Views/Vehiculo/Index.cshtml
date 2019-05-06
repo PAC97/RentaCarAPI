@@ -33,7 +33,6 @@
         <th>
             @Html.DisplayNameFor(model => model.PrecioDiario)
         </th>
-        
         <th>
             @Html.DisplayNameFor(model => model.EstadoID)
         </th>
@@ -66,12 +65,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.PrecioDiario)
         </td>
-        
         <td>
             @Html.DisplayFor(modelItem => item.EstadoID)
         </td>
         <td>
-            <img src="@item.imagen" /> 
+            @Html.DisplayFor(modelItem => item.imagen)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.VehiculoID }) |

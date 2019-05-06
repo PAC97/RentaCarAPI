@@ -40,7 +40,7 @@ namespace RentaCars.EN
         [DisplayFormat(DataFormatString = "{0:C2", ApplyFormatInEditMode = true)]
         [Required(ErrorMessage = "Campo Requerido")]
         [Display(Name = "Pago por Alquiler")]
-        public decimal PrecioDiario { get; set; }
+        public int PrecioDiario { get; set; }
         [Required(ErrorMessage = "Campo Requerido")]
         [Display(Name = "Estado id")]
         public int EstadoID { get; set; }

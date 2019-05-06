@@ -48,7 +48,7 @@ namespace RentaCarsWEB.Controllers
 
                     BL.InserVehiculo(cat);
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { sate = 1});
             }
             catch (Exception ex)
             {

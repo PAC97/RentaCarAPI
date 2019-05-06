@@ -60,6 +60,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tipo_UsuarioDALTests.cs" />
     <Compile Include="UsuarioDALTests.cs" />
+    <Compile Include="VehiculoDALTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
