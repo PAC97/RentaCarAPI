@@ -41,7 +41,7 @@ namespace RentaCars.WEB.Controllers
                 {
                     BL.InserUsuario(User);
                 }
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Usuario");
             }
             catch (Exception ex)
             {

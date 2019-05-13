@@ -62,5 +62,13 @@ namespace RentaCars.DAL.Tests
             Usuario user = uDAL.FindUsuario(usuario.UsuarioID);
             Assert.IsTrue(user.UsuarioID > 0 && usuario.TipoUsuarioID == user.TipoUsuarioID && usuario.Nombre == user.Nombre && usuario.Apellido == user.Apellido && usuario.Direccion == user.Direccion && usuario.Email == user.Email && usuario.Telefono == user.Telefono && usuario.NombreUser == user.NombreUser && usuario.Pass == user.Pass && usuario.EstadoID == user.EstadoID);
         }
+
+        [TestMethod()]
+        public void ConsultarUsuarioIDTest()
+        {
+            List<Usuario> usuarios = uDAL.ConsultarUsuarioID("pc", "1234");
+            Console.WriteLine("Datos encontrados en la base de datos {0}", usuarios.Count);
+            Assert.IsTrue(usuarios.Count > 0);
+        }
     }
 }

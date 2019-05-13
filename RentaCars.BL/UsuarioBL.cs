@@ -21,6 +21,10 @@ namespace RentaCars.BL
         {
             return DAL.UsuarioList(state);
         }
+        public List<Usuario> ConsultarUsuarioID(string nomUser, string pass)
+        {
+            return DAL.ConsultarUsuarioID(nomUser, pass);
+        }
         public int UpdateUsuario(Usuario User)
         {
             return DAL.UpdateUsuario(User);

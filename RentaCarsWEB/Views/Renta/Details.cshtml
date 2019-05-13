@@ -1,0 +1,43 @@
+﻿@model RentaCars.EN.Renta
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Renta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReservaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReservaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RentaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

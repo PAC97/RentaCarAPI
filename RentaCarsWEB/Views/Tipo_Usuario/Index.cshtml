@@ -7,16 +7,25 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div class="row">
+    <div class="col-md-6">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    </div>
+    <div class="col-md-6">
+        <p>
+            @Html.ActionLink("Inactivos", "Index", new { state = ViewBag.Inactivo })
+        </p>
+    </div>
+</div>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EstadoID)
+            @Html.DisplayNameFor(model => model.Estado.Nombre)
         </th>
         <th></th>
     </tr>
@@ -27,7 +36,7 @@
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EstadoID)
+            @Html.DisplayFor(modelItem => item.Estado.Nombre)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TipoUsuarioID }) |

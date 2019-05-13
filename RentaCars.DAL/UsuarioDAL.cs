@@ -33,6 +33,15 @@ namespace RentaCars.DAL
                        select user;
             return List.ToList();
         }
+
+        public List<Usuario> ConsultarUsuarioID(string nomUser, string pass)
+        {
+            var List = from user
+                       in db.Usuarios
+                       where user.NombreUser == nomUser && user.Pass == pass
+                       select user;
+            return List.ToList();
+        }
         //Funcion de modificacion
         public int UpdateUsuario(Usuario User)
         {

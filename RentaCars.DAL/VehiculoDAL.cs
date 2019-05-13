@@ -49,7 +49,7 @@ namespace RentaCars.DAL
         {
             int r = 0;
             Vehiculo auto = db.Vehiculos.Find(id);
-            auto.Estado.EstadoID = 2;
+            auto.EstadoID = 2;
             r = UpdateVehiculo(auto);
             return r;
         }

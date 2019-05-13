@@ -27,10 +27,9 @@ namespace RentaCars.DAL
         //funcion que devuelve datos
         public List<TipoUsuario> Tipo_UsuarioList(string state)
         {
-            var List = from tipo
-                       in db.TipoUsuario
-                       where tipo.Estado.Nombre == "Activo"
-                       select tipo;
+            var List = db.TipoUsuario
+                .Where(tu => tu.Estado.Nombre == state)
+                .Include(tu => tu.Estado);
             return List.ToList();
         }
         //Funcion de modificacion

@@ -48,7 +48,7 @@ namespace RentaCarsWEB.Controllers
 
                     BL.InserVehiculo(cat);
                 }
-                return RedirectToAction("Index", new { sate = 1});
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
@@ -59,7 +59,7 @@ namespace RentaCarsWEB.Controllers
         // GET: Vehiculo/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(BL.FindVehiculo(id));
         }
 
         // POST: Vehiculo/Edit/5

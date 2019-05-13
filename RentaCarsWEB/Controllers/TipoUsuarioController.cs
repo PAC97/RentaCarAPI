@@ -15,6 +15,8 @@ namespace RentaCars.WEB.Controllers
         // GET: Tipo_Usuario
         public ActionResult Index(string state)
         {
+            ViewBag.Activo = String.IsNullOrEmpty(state) ? "Activo" : "";
+            ViewBag.Inactivo = string.IsNullOrEmpty(state) ? "Inactivo" : "";
             return View(BL.Tipo_UsuarioList(state));
         }
 
@@ -91,6 +93,11 @@ namespace RentaCars.WEB.Controllers
             {
                 return View();
             }
+        }
+        public ActionResult CerrarCesion()
+        {
+            Session.Clear();
+            return RedirectToAction()
         }
     }
 }

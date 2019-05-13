@@ -36,13 +36,49 @@ namespace RentaCars.DAL.Tests
             Vehiculo ve = vehiculos.OrderByDescending(v => v.VehiculoID).FirstOrDefault();
 
             Assert.IsTrue(
-                r > 0 && vehiculo.UsuarioID == ve.UsuarioID && 
-                vehiculo.Placa == ve.Placa && vehiculo.Marca == ve.Marca && 
-                vehiculo.Modelo == ve.Modelo && vehiculo.Year == ve.Year && 
+                r > 0 && vehiculo.UsuarioID == ve.UsuarioID &&
+                vehiculo.Placa == ve.Placa && vehiculo.Marca == ve.Marca &&
+                vehiculo.Modelo == ve.Modelo && vehiculo.Year == ve.Year &&
                 vehiculo.Npuertas == ve.Npuertas &&
                 vehiculo.PrecioDiario == ve.PrecioDiario &&
-                vehiculo.EstadoID == ve.EstadoID && 
+                vehiculo.EstadoID == ve.EstadoID &&
                 vehiculo.imagen == ve.imagen);
+        }
+
+        [TestMethod()]
+        public void VehiculoListTest()
+        {
+            List<Vehiculo> vehiculos = vDAL.VehiculoList("Activo");
+            Console.WriteLine("Datos encontrados en la base de datos {0}", vehiculos.Count);
+            Assert.IsTrue(vehiculos.Count > 0);
+        }
+
+        [TestMethod()]
+        public void UpdateVehiculoTest()
+        {
+            List<Vehiculo> vehiculos = vDAL.VehiculoList("Activo");
+            Vehiculo vehiculo = vehiculos.OrderByDescending(vr => vr.VehiculoID).FirstOrDefault();
+            vehiculo.Modelo = "BMW";
+            int r = vDAL.UpdateVehiculo(vehiculo);
+            Assert.IsTrue(r > 0);
+        }
+
+        [TestMethod()]
+        public void DeleteVehiculoTest()
+        {
+            List<Vehiculo> vehiculos = vDAL.VehiculoList("Activo");
+            Vehiculo vehiculo = vehiculos.OrderByDescending(vr => vr.VehiculoID).FirstOrDefault();
+            int r = vDAL.DeleteVehiculo(vehiculo.VehiculoID);
+            Assert.IsTrue(r > 0);
+        }
+
+        [TestMethod()]
+        public void FindVehiculoTest()
+        {
+            List<Vehiculo> vehiculos = vDAL.VehiculoList("Activo");
+            Vehiculo vehiculo = vehiculos.OrderByDescending(vr => vr.VehiculoID).FirstOrDefault();
+            Vehiculo veh = vDAL.FindVehiculo(vehiculo.VehiculoID);
+            Assert.IsTrue(veh.VehiculoID > 0 && vehiculo.UsuarioID == veh.UsuarioID && vehiculo.Placa == veh.Placa && vehiculo.Marca == veh.Marca && vehiculo.Modelo == veh.Modelo && vehiculo.Year == veh.Year && vehiculo.Npuertas == veh.Npuertas && vehiculo.PrecioDiario == veh.PrecioDiario && vehiculo.EstadoID == veh.EstadoID && vehiculo.imagen == veh.imagen);
         }
     }
 }
